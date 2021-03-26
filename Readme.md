@@ -1,4 +1,4 @@
-# Webtester
+# WebTester
 this terraform will use aws provider to install webpagetest/server and webpagetest/agent Dockers on an EC2 instance.
 
 ## Usage 
@@ -9,8 +9,6 @@ Copy ` terraform.tfvars-example ` to ` terraform.tfvars ` , make sure you add th
 * `aws-region` the AWS region where you want to launch the infrastructure
 
 * `management-ip`  you public ip address subnets , to allow SSH and HTTP Connection from them 
-
-* `ami-id` go to the AWS console, and get the AMI ID you want for the specific region you are using
 
 ### Terraform
 

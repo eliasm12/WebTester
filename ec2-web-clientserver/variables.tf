@@ -1,6 +1,3 @@
-variable "ami-id" {
-  type = string
-}
 
 variable "iam-instance-profile" {
   default = ""
@@ -20,10 +17,8 @@ variable "key-name" {
   type = string
 }
 
-
-variable "private-ip" {
-    default = ""
-    type = string  
+variable "ami-id" {
+  type = string
 }
 
 variable "subnet-id" {
@@ -44,4 +39,9 @@ variable "costcenter" {
 variable "envirement" {
     default = "Developement"
     type = string
+}
+
+variable "volume-size" {
+  default = "15"
+  type = string
 }
