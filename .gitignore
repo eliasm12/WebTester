@@ -1,0 +1,9 @@
+*.tfvars
+*.pem
+*.pub
+*.key
+.terraform
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.vscode/
