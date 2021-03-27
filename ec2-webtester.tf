@@ -25,6 +25,7 @@ module "ec2-webtester-server" {
     subnet-id = aws_subnet.webtester-subnet-public-1.id
     user-data = <<EOF
 #!/bin/bash
+sudo modprobe ifb numifbs=1 
 sudo apt-get update && sudo apt-get install -y docker.io
 sudo usermod -aG docker ubuntu
 docker pull webpagetest/server
@@ -44,10 +45,11 @@ module "ec2-webtester-agent" {
     subnet-id = aws_subnet.webtester-subnet-public-1.id
     user-data = <<EOF
 #!/bin/bash
+sudo modprobe ifb numifbs=1 
 sudo apt-get update && sudo apt-get install -y docker.io
 sudo usermod -aG docker ubuntu
 docker pull webpagetest/agent
-docker run -d -p 80:80 --network="host" -e "SERVER_URL=http://server.pagespeed.test/work/" -e "LOCATION=Test" webpagetest/agent
+docker run -d -p 80:80 --network="host" -e "SERVER_URL=http://server.pagespeed.test/work/" -e "SHAPER=none" -e "LOCATION=Test" --cap-add="NET_ADMIN" webpagetest/agent
 
 EOF
   }
