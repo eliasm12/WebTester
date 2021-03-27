@@ -60,7 +60,7 @@ resource "aws_security_group" "webtester-ec2" {
   name        = "webtester-ec2"
   description = "Allow inbound http and ssh"
   vpc_id      = aws_vpc.webtester.id
-
+  
 
 
   ingress {
@@ -77,6 +77,14 @@ resource "aws_security_group" "webtester-ec2" {
     protocol    = "tcp"
     cidr_blocks = var.management-ip
   }
+
+  ingress {
+    description = "Allow Server-Agent"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = [ aws_vpc.webtester.cidr_block ]
+    } 
 
   egress {
     from_port   = 0

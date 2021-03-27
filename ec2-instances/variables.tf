@@ -45,3 +45,13 @@ variable "volume-size" {
   default = "15"
   type = string
 }
+
+variable "user-data" {
+  default = ""
+  type = string 
+}
+
+variable "role-name" {
+  default = ""
+  type = string 
+}

@@ -14,8 +14,3 @@ variable "management-ip" {
   default = []
   type = list(string)
 }
-
-variable "ami-id" {
-  default = ""
-  type = string
-}

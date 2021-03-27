@@ -1,8 +1,6 @@
-
-
 resource "aws_instance" "default" {
   ami                    = var.ami-id
-  iam_instance_profile   = var.iam-instance-profile
+  iam_instance_profile   = aws_iam_instance_profile.webtest_profile.id
   instance_type          = var.instance-type
   subnet_id              = var.subnet-id
   vpc_security_group_ids = var.vpc-security-group-ids
@@ -11,16 +9,8 @@ resource "aws_instance" "default" {
     volume_size = var.volume-size
   
   }
+  user_data = var.user-data
 
-  user_data = <<EOF
-#!/bin/bash
-sudo apt-get update && sudo apt-get install -y docker.io
-sudo usermod -aG docker ubuntu
-docker pull webpagetest/server
-docker pull webpagetest/agent
-docker run -d -p 80:80/tcp webpagetest/server
-
-EOF
 
   tags = {
     "Name" = var.name
@@ -28,3 +18,6 @@ EOF
     "CostCenter" = var.costcenter 
   }
 }
+
+
+
