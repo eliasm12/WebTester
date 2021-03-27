@@ -2,16 +2,16 @@
 this terraform will use aws provider to install webpagetest/server and webpagetest/agent Dockers on an EC2 instance.
 
 ## Usage 
-1   you will need first to create ssh keys to use them to connect later to the EC2 , please create ssh key and public key and put them inside this project root directory, use the name : ***tester-ec2-key.key*** and ***tester-ec2-key.pub*** for the private and public key respectively, on linux you can generate them with the command ` ssh-keygen -t rsa -b 2048 `
+* you will need first to create ssh keys to use them to connect later to the EC2 , please create ssh key and public key and put them inside this project root directory, use the name : ***tester-ec2-key.key*** and ***tester-ec2-key.pub*** for the private and public key respectively, on linux you can generate them with the command ` ssh-keygen -t rsa -b 2048 `
 
 
-2   Copy ` terraform.tfvars-example ` to ` terraform.tfvars ` , make sure you add the values for the following variables inside the file :
+* Copy ` terraform.tfvars-example ` to ` terraform.tfvars ` , make sure you add the values for the following variables inside the file :
 
-    * `aws-access-key` AND `aws-secret-key` your AWS access and secret key that you can get from IAM https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html make sure you attach an administrator policy to your user
+  * `aws-access-key` AND `aws-secret-key` your AWS access and secret key that you can get from IAM https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html make sure you attach an administrator policy to your user
 
-    * `aws-region` the AWS region where you want to launch the infrastructure
+  * `aws-region` the AWS region where you want to launch the infrastructure
 
-    * `management-ip`  you public ip address subnets , to allow SSH and HTTP Connection from them 
+  * `management-ip`  you public ip address subnets , to allow SSH and HTTP Connection from them 
 
 ## Deploy with Terraform
 
