@@ -7,8 +7,20 @@ tags = {
 }
 }
 
+
+data "aws_availability_zones" "azloc" {
+  state = "available"
+
+  filter {
+    name   = "opt-in-status"
+    values = ["opt-in-not-required"]
+  }
+
+
+}
+
 resource "aws_subnet" "webtester-subnet-public-1" {
-    availability_zone_id = "euw1-az1"  
+    availability_zone = data.aws_availability_zones.azloc.names[0]
     cidr_block = "10.0.0.0/24"
     vpc_id = aws_vpc.webtester.id
     map_public_ip_on_launch = true
